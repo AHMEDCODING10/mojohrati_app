@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -210,14 +211,14 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 18),
               decoration: BoxDecoration(
                 gradient: isSelected ? AppColors.liquidGold : null,
-                color: isSelected ? null : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+                color: isSelected ? null : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(
-                  color: isSelected ? Colors.transparent : AppColors.primaryGold.withOpacity(0.2),
+                  color: isSelected ? Colors.transparent : AppColors.primaryGold.withValues(alpha: 0.2),
                 ),
                 boxShadow: isSelected ? [
                   BoxShadow(
-                    color: AppColors.primaryGold.withOpacity(0.2),
+                    color: AppColors.primaryGold.withValues(alpha: 0.2),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )
@@ -328,7 +329,7 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.shopping_bag_outlined, size: 80, color: AppColors.primaryGold.withOpacity(0.3)),
+              Icon(Icons.shopping_bag_outlined, size: 80, color: AppColors.primaryGold.withValues(alpha: 0.3)),
               const SizedBox(height: 16),
               Text('no_products_found'.tr(),
                   style: GoogleFonts.cairo(color: isDark ? Colors.white54 : Colors.black45)),
@@ -403,7 +404,7 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.inventory_2_outlined, size: 80, color: Colors.grey.withOpacity(0.3)),
+            Icon(Icons.inventory_2_outlined, size: 80, color: Colors.grey.withValues(alpha: 0.3)),
             const SizedBox(height: 16),
             Text('vault_empty'.tr(),
                 style: GoogleFonts.cairo(fontSize: 18, color: Colors.grey)),
@@ -421,9 +422,9 @@ class _MyProductsScreenState extends State<MyProductsScreen> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.redAccent.withOpacity(0.1),
+              color: Colors.redAccent.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
-              border: Border.all(color: Colors.redAccent.withOpacity(0.3)),
+              border: Border.all(color: Colors.redAccent.withValues(alpha: 0.3)),
             ),
             child: Row(
               mainAxisSize: MainAxisSize.min,
@@ -519,10 +520,10 @@ class _ActionButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(6),
         decoration: BoxDecoration(
-          color: color.withOpacity(0.9),
+          color: color.withValues(alpha: 0.9),
           shape: BoxShape.circle,
           boxShadow: [
-            BoxShadow(color: color.withOpacity(0.3), blurRadius: 6, offset: const Offset(0, 2)),
+            BoxShadow(color: color.withValues(alpha: 0.3), blurRadius: 6, offset: const Offset(0, 2)),
           ],
         ),
         child: Icon(icon, color: iconColor, size: 18),
@@ -555,7 +556,7 @@ class _MerchantCategoryCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.12),
+              color: Colors.black.withValues(alpha: 0.12),
               blurRadius: 12,
               offset: const Offset(0, 6),
             ),
@@ -583,8 +584,8 @@ class _MerchantCategoryCard extends StatelessWidget {
                     end: Alignment.bottomCenter,
                     colors: [
                       Colors.transparent,
-                      Colors.black.withOpacity(0.1),
-                      Colors.black.withOpacity(0.85),
+                      Colors.black.withValues(alpha: 0.1),
+                      Colors.black.withValues(alpha: 0.85),
                     ],
                   ),
                 ),
@@ -596,9 +597,9 @@ class _MerchantCategoryCard extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.6),
+                    color: Colors.black.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: Colors.white.withOpacity(0.2)),
+                    border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -670,7 +671,7 @@ class _MerchantCategoryCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.category_rounded,
-                color: AppColors.primaryGold.withOpacity(0.5), size: 36),
+                color: AppColors.primaryGold.withValues(alpha: 0.5), size: 36),
           ],
         ),
       ),

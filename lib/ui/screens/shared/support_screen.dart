@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -116,9 +117,9 @@ class _SupportScreenState extends State<SupportScreen> {
         Container(
           padding: const EdgeInsets.all(30),
           decoration: BoxDecoration(
-            color: AppColors.primaryGold.withOpacity(0.1),
+            color: AppColors.primaryGold.withValues(alpha: 0.1),
             shape: BoxShape.circle,
-            border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+            border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
           ),
           child: const Icon(Icons.support_agent_rounded, size: 56, color: AppColors.primaryGold),
         ),
@@ -136,7 +137,7 @@ class _SupportScreenState extends State<SupportScreen> {
   Widget _buildEmptyState(bool isDark) {
     return Column(
       children: [
-        Icon(Icons.contact_support_outlined, size: 64, color: AppColors.primaryGold.withOpacity(0.3)),
+        Icon(Icons.contact_support_outlined, size: 64, color: AppColors.primaryGold.withValues(alpha: 0.3)),
         const SizedBox(height: 16),
         Text(
           'لا توجد وسائل تواصل متاحة حالياً',
@@ -209,12 +210,12 @@ class _SupportScreenState extends State<SupportScreen> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: color.withOpacity(0.2)),
+              border: Border.all(color: color.withValues(alpha: 0.2)),
               boxShadow: [
                  if (!isDark) BoxShadow(
-                  color: color.withOpacity(0.1),
+                  color: color.withValues(alpha: 0.1),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 )
@@ -226,7 +227,7 @@ class _SupportScreenState extends State<SupportScreen> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: color.withOpacity(0.1),
+                    color: color.withValues(alpha: 0.1),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(icon, color: color, size: 28),

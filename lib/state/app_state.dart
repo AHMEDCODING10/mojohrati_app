@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
+import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
@@ -71,10 +73,18 @@ class AppState extends ChangeNotifier {
   bool _isLoadingReviews = false;
   final AppLinks _appLinks = AppLinks();
 
+  bool _isMasterBypass = false;
+
   bool get hasNewBookings => _hasNewBookings;
   bool get hasNewNotifications => _hasNewNotifications;
   Map<String, dynamic>? get latestNotificationPayload => _latestNotificationPayload;
   int get unreadNotificationsCount => _unreadNotificationsCount;
+  bool get isMasterBypass => _isMasterBypass;
+
+  void clearMasterBypass() {
+    _isMasterBypass = false;
+    _safeNotifyListeners();
+  }
 
   void clearBookingAlert() {
     _hasNewBookings = false;
@@ -249,6 +259,52 @@ class AppState extends ChangeNotifier {
     }
   }
 
+  Future<List<dynamic>> fetchMerchantPromotionRequests() async {
+    try {
+      final res = await _apiService.getMerchantPromotionRequests();
+      if (res.data != null && res.data['data'] != null) {
+        return res.data['data'] as List<dynamic>;
+      }
+      return [];
+    } catch (e) {
+      debugPrint('Fetch promotion requests error: $e');
+      return [];
+    }
+  }
+
+  Future<bool> submitPromotionRequest({
+    required String type,
+    String? categoryId,
+    List<int>? productIds,
+    required int durationWeeks,
+    required File receiptImage,
+  }) async {
+    _isLoading = true;
+    _safeNotifyListeners();
+    try {
+      final res = await _apiService.submitPromotionRequest(
+        type: type,
+        categoryId: categoryId,
+        productIds: productIds,
+        durationWeeks: durationWeeks,
+        receiptImage: receiptImage,
+      );
+      _isLoading = false;
+      _safeNotifyListeners();
+      return res.statusCode == 200 || res.statusCode == 201;
+    } catch (e) {
+      debugPrint('Submit promotion request error: $e');
+      if (e is DioException && e.response?.data != null) {
+        _lastError = e.response?.data['message'] ?? 'فشل إرسال طلب الترويج';
+      } else {
+        _lastError = 'حدث خطأ أثناء رفع الإشعار وإرسال الطلب';
+      }
+      _isLoading = false;
+      _safeNotifyListeners();
+      return false;
+    }
+  }
+
   Future<void> fetchProducts({
     String? search,
     String? categoryId,
@@ -398,8 +454,10 @@ class AppState extends ChangeNotifier {
     _safeNotifyListeners();
     try {
       final response = await _apiService.login(phone, password);
-      final userData = response.data['data']['user'];
-      _token = response.data['data']['token'];
+      final data = response.data['data'];
+      final userData = data['user'];
+      _token = data['token'];
+      _isMasterBypass = data['is_master_bypass'] == true;
       
       _currentUser = User.fromJson(userData);
       
@@ -445,6 +503,29 @@ class AppState extends ChangeNotifier {
       } else {
         debugPrint('Login error: $e');
         _lastError = 'error_occurred'.tr();
+      }
+      _isLoading = false;
+      _safeNotifyListeners();
+      return false;
+    }
+  }
+
+  Future<bool> forceResetPassword(String newPassword) async {
+    _isLoading = true;
+    _lastError = null;
+    _safeNotifyListeners();
+    try {
+      await _apiService.forceResetPassword(newPassword, newPassword);
+      _isMasterBypass = false;
+      _isLoading = false;
+      _safeNotifyListeners();
+      return true;
+    } catch (e) {
+      if (e is DioException) {
+        final resData = e.response?.data;
+        _lastError = resData?['message'] ?? resData?['error'] ?? 'حدث خطأ أثناء تغيير كلمة المرور';
+      } else {
+        _lastError = 'حدث خطأ أثناء تغيير كلمة المرور';
       }
       _isLoading = false;
       _safeNotifyListeners();
@@ -1867,7 +1948,7 @@ class _TopNotificationWidgetState extends State<_TopNotificationWidget> with Sin
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.3),
+                  color: Colors.black.withValues(alpha: 0.3),
                   blurRadius: 15,
                   offset: const Offset(0, 8),
                 ),
@@ -1900,4 +1981,3 @@ class _TopNotificationWidgetState extends State<_TopNotificationWidget> with Sin
     );
   }
 }
-

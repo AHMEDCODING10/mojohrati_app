@@ -128,7 +128,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       height: 60,
       textStyle: TextStyle(fontSize: 22, color: isDark ? Colors.white : Colors.black, fontWeight: FontWeight.bold),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: isDark ? Colors.white30 : Colors.black26, width: 1),
       ),
@@ -295,7 +295,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           borderSide: const BorderSide(color: AppColors.primaryGold, width: 2),
         ),
         filled: true,
-        fillColor: isDark ? Colors.white.withOpacity(0.05) : Colors.grey.withOpacity(0.05),
+        fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey.withValues(alpha: 0.05),
       ),
     );
   }

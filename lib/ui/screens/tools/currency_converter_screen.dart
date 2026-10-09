@@ -62,7 +62,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                   floatingLabelBehavior: FloatingLabelBehavior.auto,
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.3)),
+                    borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.3)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(15),
@@ -70,7 +70,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                   ),
                   prefixIcon: const Icon(Icons.attach_money, color: AppColors.primaryGold),
                   filled: true,
-                  fillColor: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+                  fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
                 ),
                 keyboardType: const TextInputType.numberWithOptions(decimal: true),
                 validator: (val) => val == null || val.isEmpty ? 'required_field'.tr() : null,
@@ -120,7 +120,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: AppColors.primaryGold.withOpacity(0.3),
+                        color: AppColors.primaryGold.withValues(alpha: 0.3),
                         blurRadius: 12,
                         offset: const Offset(0, 5),
                       )
@@ -150,7 +150,7 @@ class _CurrencyConverterScreenState extends State<CurrencyConverterScreen> {
                 Container(
                   padding: const EdgeInsets.all(24),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryGold.withOpacity(0.1),
+                    color: AppColors.primaryGold.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: AppColors.primaryGold),
                   ),

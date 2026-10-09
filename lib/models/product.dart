@@ -73,6 +73,7 @@ class Product {
   final MerchantData? merchant;
   final List<String> images;
   final bool isFeatured;
+  final bool isPromoted;
   final String? purity;
   final double workmanship; // Workmanship per gram
   final int stockQuantity;
@@ -115,6 +116,7 @@ class Product {
     this.merchant,
     required this.images,
     this.isFeatured = false,
+    this.isPromoted = false,
     this.purity,
     this.workmanship = 0.0,
     this.stockQuantity = 0,
@@ -144,6 +146,7 @@ class Product {
       merchant: (map['merchant'] != null) ? MerchantData.fromMap(map['merchant']) : null,
       images: _parseImages(map),
       isFeatured: map['is_featured'] == 1 || map['is_featured'] == true,
+      isPromoted: map['is_promoted'] == 1 || map['is_promoted'] == true,
       purity: map['purity'],
       workmanship: double.tryParse(map['workmanship']?.toString() ?? '0') ?? 0.0,
       stockQuantity: stock,

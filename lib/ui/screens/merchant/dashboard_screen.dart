@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -88,10 +89,10 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.primaryGold.withOpacity(0.5), width: 1.5),
+              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.5), width: 1.5),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withValues(alpha: 0.2),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
@@ -238,7 +239,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.3),
+            color: AppColors.primaryGold.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -346,7 +347,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
       height: 28,
       padding: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: isDark ? Colors.black.withOpacity(0.2) : Colors.black.withOpacity(0.1),
+        color: isDark ? Colors.black.withValues(alpha: 0.2) : Colors.black.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: DropdownButtonHideUnderline(
@@ -533,9 +534,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.redAccent.withOpacity(0.08),
+          color: Colors.redAccent.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: Colors.redAccent.withOpacity(0.35)),
+          border: Border.all(color: Colors.redAccent.withValues(alpha: 0.35)),
         ),
         child: Column(
           children: [
@@ -543,7 +544,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               children: [
                 Container(
                   padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(color: Colors.redAccent.withOpacity(0.1), shape: BoxShape.circle),
+                  decoration: BoxDecoration(color: Colors.redAccent.withValues(alpha: 0.1), shape: BoxShape.circle),
                   child: const Icon(Icons.warning_amber_rounded, color: Colors.redAccent, size: 20),
                 ),
                 const SizedBox(width: 16),
@@ -632,9 +633,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                       return Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.white.withOpacity(0.05) : Colors.grey.shade50,
+                          color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade50,
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: isDark ? Colors.white10 : Colors.black.withOpacity(0.05)),
+                          border: Border.all(color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05)),
                         ),
                         child: Row(
                           children: [
@@ -705,10 +706,10 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.12) : Colors.white.withOpacity(0.9),
+        color: isDark ? Colors.white.withValues(alpha: 0.12) : Colors.white.withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
+          color: isDark ? Colors.white.withValues(alpha: 0.08) : Colors.black.withValues(alpha: 0.05),
         ),
       ),
       child: Column(
@@ -717,7 +718,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
           Container(
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: color.withOpacity(0.1),
+              color: color.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(icon, color: color, size: 20),
@@ -755,14 +756,14 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
       height: 300,
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.8),
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(40),
         border: Border.all(
-          color: isDark ? Colors.white.withOpacity(0.05) : AppColors.primaryGold.withOpacity(0.1),
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : AppColors.primaryGold.withValues(alpha: 0.1),
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -776,7 +777,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  color: Colors.greenAccent.withOpacity(0.1),
+                  color: Colors.greenAccent.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Icon(Icons.auto_graph_rounded, color: Colors.greenAccent, size: 20),
@@ -817,7 +818,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   show: true,
                   drawVerticalLine: false,
                   getDrawingHorizontalLine: (value) => FlLine(
-                    color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
+                    color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
                     strokeWidth: 1,
                   ),
                 ),
@@ -878,8 +879,8 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                       show: true,
                       gradient: LinearGradient(
                         colors: [
-                          AppColors.primaryGold.withOpacity(0.2),
-                          AppColors.primaryGold.withOpacity(0.0),
+                          AppColors.primaryGold.withValues(alpha: 0.2),
+                          AppColors.primaryGold.withValues(alpha: 0.0),
                         ],
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
@@ -903,7 +904,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
         decoration: BoxDecoration(
           color: isSelected ? AppColors.primaryGold : Colors.transparent,
           borderRadius: BorderRadius.circular(10),
-          border: Border.all(color: isSelected ? AppColors.primaryGold : Colors.grey.withOpacity(0.3)),
+          border: Border.all(color: isSelected ? AppColors.primaryGold : Colors.grey.withValues(alpha: 0.3)),
         ),
         child: Text(
           label,
@@ -936,9 +937,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
           decoration: BoxDecoration(
-            color: Colors.redAccent.withOpacity(0.08),
+            color: Colors.redAccent.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.redAccent.withOpacity(0.35)),
+            border: Border.all(color: Colors.redAccent.withValues(alpha: 0.35)),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -1000,9 +1001,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
           decoration: BoxDecoration(
-            color: Colors.orangeAccent.withOpacity(0.08),
+            color: Colors.orangeAccent.withValues(alpha: 0.08),
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: Colors.orangeAccent.withOpacity(0.35)),
+            border: Border.all(color: Colors.orangeAccent.withValues(alpha: 0.35)),
           ),
           child: Row(
             children: [
@@ -1035,9 +1036,9 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
-          color: AppColors.primaryGold.withOpacity(0.08),
+          color: AppColors.primaryGold.withValues(alpha: 0.08),
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.primaryGold.withOpacity(0.35)),
+          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.35)),
         ),
         child: Row(
           children: [
@@ -1096,10 +1097,10 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
               return Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: isDark ? Colors.white.withOpacity(0.12) : Colors.white.withOpacity(0.9),
+                  color: isDark ? Colors.white.withValues(alpha: 0.12) : Colors.white.withValues(alpha: 0.9),
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(
-                    color: isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
+                    color: isDark ? Colors.white.withValues(alpha: 0.08) : Colors.black.withValues(alpha: 0.05),
                   ),
                 ),
                   child: ListTile(
@@ -1111,7 +1112,7 @@ class _MerchantDashboardScreenState extends State<MerchantDashboardScreen> {
                   leading: Container(
                     padding: const EdgeInsets.all(10),
                     decoration: BoxDecoration(
-                      color: AppColors.primaryGold.withOpacity(0.1),
+                      color: AppColors.primaryGold.withValues(alpha: 0.1),
                       shape: BoxShape.circle,
                     ),
                     child: const Icon(Icons.shopping_bag_outlined, color: AppColors.primaryGold),

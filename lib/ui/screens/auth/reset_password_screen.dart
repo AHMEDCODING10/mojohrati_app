@@ -67,7 +67,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         decoration: BoxDecoration(
           color: isDark ? AppColors.premiumBlack : Colors.white,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(40)),
-          border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
         ),
         padding: const EdgeInsets.all(32),
         child: Column(
@@ -213,7 +213,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(color: isDark ? Colors.white30 : Colors.black26, width: 1),
       ),

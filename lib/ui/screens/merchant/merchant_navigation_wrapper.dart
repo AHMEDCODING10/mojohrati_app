@@ -132,7 +132,7 @@ class _MerchantNavigationWrapperState extends State<MerchantNavigationWrapper> {
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryGold.withOpacity(0.4),
+                  color: AppColors.primaryGold.withValues(alpha: 0.4),
                   blurRadius: 20,
                   spreadRadius: 2,
                 ),
@@ -153,12 +153,12 @@ class _MerchantNavigationWrapperState extends State<MerchantNavigationWrapper> {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      AppColors.primaryGold.withOpacity(0.7),
-                      AppColors.primaryGold.withOpacity(0.3),
+                      AppColors.primaryGold.withValues(alpha: 0.7),
+                      AppColors.primaryGold.withValues(alpha: 0.3),
                     ],
                   ),
                   border: Border.all(
-                    color: Colors.white.withOpacity(0.2),
+                    color: Colors.white.withValues(alpha: 0.2),
                     width: 1.5,
                   ),
                 ),
@@ -184,9 +184,9 @@ class _MerchantNavigationWrapperState extends State<MerchantNavigationWrapper> {
                               decoration: BoxDecoration(
                                 color: isDark ? const Color(0xFF1C1C2E) : Colors.white,
                                 borderRadius: BorderRadius.circular(32),
-                                border: Border.all(color: AppColors.primaryGold.withOpacity(0.3), width: 1.5),
+                                border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3), width: 1.5),
                                 boxShadow: [
-                                  BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 30, offset: const Offset(0, -10)),
+                                  BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 30, offset: const Offset(0, -10)),
                                 ],
                               ),
                               child: Column(
@@ -197,8 +197,8 @@ class _MerchantNavigationWrapperState extends State<MerchantNavigationWrapper> {
                                     height: 64,
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
-                                      color: Colors.amber.withOpacity(0.1),
-                                      border: Border.all(color: Colors.amber.withOpacity(0.4)),
+                                      color: Colors.amber.withValues(alpha: 0.1),
+                                      border: Border.all(color: Colors.amber.withValues(alpha: 0.4)),
                                     ),
                                     child: const Icon(Icons.verified_user_outlined, color: Colors.amber, size: 32),
                                   ),
@@ -285,7 +285,7 @@ class _MerchantNavigationWrapperState extends State<MerchantNavigationWrapper> {
       padding: EdgeInsets.zero,
       notchMargin: 12,
       shape: const CircularNotchedRectangle(),
-      color: isDark ? AppColors.matteBlack.withOpacity(0.9) : Colors.white.withOpacity(0.9),
+      color: isDark ? AppColors.matteBlack.withValues(alpha: 0.9) : Colors.white.withValues(alpha: 0.9),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [

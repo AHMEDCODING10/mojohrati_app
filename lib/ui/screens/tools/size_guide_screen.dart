@@ -57,7 +57,7 @@ class SizeGuideScreen extends StatelessWidget {
 
   TableRow _buildRow(List<String> cells, {bool isHeader = false}) {
     return TableRow(
-      decoration: isHeader ? BoxDecoration(color: AppColors.primaryGold.withOpacity(0.1)) : null,
+      decoration: isHeader ? BoxDecoration(color: AppColors.primaryGold.withValues(alpha: 0.1)) : null,
       children: cells.map((cell) {
         return Padding(
           padding: const EdgeInsets.all(12),

@@ -17,8 +17,8 @@ class ShimmerHelper {
 
   static Widget buildGoldShimmer({required Widget child}) {
     return Shimmer.fromColors(
-      baseColor: AppColors.primaryGold.withOpacity(0.3),
-      highlightColor: AppColors.primaryGold.withOpacity(0.1),
+      baseColor: AppColors.primaryGold.withValues(alpha: 0.3),
+      highlightColor: AppColors.primaryGold.withValues(alpha: 0.1),
       child: child,
     );
   }

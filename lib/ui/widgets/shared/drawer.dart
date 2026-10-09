@@ -35,8 +35,8 @@ class AppDrawer extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   color: isDark 
-                      ? Colors.black.withOpacity(0.8) 
-                      : Colors.white.withOpacity(0.85),
+                      ? Colors.black.withValues(alpha: 0.8) 
+                      : Colors.white.withValues(alpha: 0.85),
                   gradient: isDark ? AppColors.meshDark : AppColors.meshLight,
                 ),
               ),
@@ -180,7 +180,7 @@ class AppDrawer extends StatelessWidget {
         borderRadius: const BorderRadius.only(bottomRight: Radius.circular(50)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.3),
+            color: AppColors.primaryGold.withValues(alpha: 0.3),
             blurRadius: 30,
             offset: const Offset(0, 10),
           ),
@@ -243,7 +243,7 @@ class AppDrawer extends StatelessWidget {
       child: Text(
         title, // removed toUpperCase() for Arabic compatibility
         style: TextStyle(
-          color: isDark ? AppColors.primaryGold.withOpacity(0.8) : AppColors.primaryGold,
+          color: isDark ? AppColors.primaryGold.withValues(alpha: 0.8) : AppColors.primaryGold,
           fontSize: 13,
           fontWeight: FontWeight.w800,
         ),
@@ -254,16 +254,16 @@ class AppDrawer extends StatelessWidget {
   Widget _buildRoyalCard(BuildContext context, IconData icon, String title, Widget destination, bool isDark, {Color? accent}) {
     return Container(
       decoration: BoxDecoration(
-        color: accent ?? (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+        color: accent ?? (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isDark ? AppColors.primaryGold.withOpacity(0.1) : Colors.black.withOpacity(0.05),
+          color: isDark ? AppColors.primaryGold.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           if (!isDark)
             BoxShadow(
-              color: Colors.black.withOpacity(0.03),
+              color: Colors.black.withValues(alpha: 0.03),
               blurRadius: 15,
               offset: const Offset(0, 8),
             ),
@@ -289,7 +289,7 @@ class AppDrawer extends StatelessWidget {
             style: GoogleFonts.cairo(
               fontSize: 14, 
               fontWeight: FontWeight.bold,
-              color: isDark ? Colors.white.withOpacity(0.9) : Colors.black87,
+              color: isDark ? Colors.white.withValues(alpha: 0.9) : Colors.black87,
             ),
           ),
           trailing: Icon(Icons.arrow_forward_ios_rounded, size: 14, color: isDark ? Colors.white24 : Colors.black26),
@@ -308,9 +308,9 @@ class AppDrawer extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 20),
         decoration: BoxDecoration(
-          color: isDark ? Colors.white.withOpacity(0.03) : Colors.white.withOpacity(0.4),
+          color: isDark ? Colors.white.withValues(alpha: 0.03) : Colors.white.withValues(alpha: 0.4),
           borderRadius: BorderRadius.circular(24),
-          border: Border.all(color: AppColors.primaryGold.withOpacity(0.15)),
+          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.15)),
         ),
         child: Column(
           children: [
@@ -334,9 +334,9 @@ class AppDrawer extends StatelessWidget {
   Widget _buildThemeToggleCard(ThemeState themeState, bool isDark) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Colors.black.withOpacity(0.2) : Colors.white,
+        color: isDark ? Colors.black.withValues(alpha: 0.2) : Colors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
@@ -347,7 +347,7 @@ class AppDrawer extends StatelessWidget {
             secondary: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.primaryGold.withOpacity(0.1),
+                color: AppColors.primaryGold.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(

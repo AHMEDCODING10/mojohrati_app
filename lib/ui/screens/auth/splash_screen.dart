@@ -93,8 +93,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     final bgColor = isSystemDark ? AppColors.matteBlack : Colors.white;
     final subtitleColor = isSystemDark 
-        ? AppColors.primaryGold.withOpacity(0.6) 
-        : AppColors.primaryGold.withOpacity(0.8);
+        ? AppColors.primaryGold.withValues(alpha: 0.6) 
+        : AppColors.primaryGold.withValues(alpha: 0.8);
     final versionColor = isSystemDark ? Colors.white24 : Colors.black26;
     final designerColor = isSystemDark ? Colors.white38 : Colors.black45;
     final dividerColor = isSystemDark ? Colors.white10 : Colors.black12;
@@ -112,7 +112,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
               height: 300,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.primaryGold.withOpacity(isSystemDark ? 0.05 : 0.08),
+                color: AppColors.primaryGold.withValues(alpha: isSystemDark ? 0.05 : 0.08),
               ),
             ),
           ),
@@ -132,7 +132,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                         border: Border.all(color: AppColors.primaryGold, width: 1.5),
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primaryGold.withOpacity(isSystemDark ? 0.1 : 0.15),
+                            color: AppColors.primaryGold.withValues(alpha: isSystemDark ? 0.1 : 0.15),
                             blurRadius: 40,
                             spreadRadius: 10,
                           ),

@@ -18,7 +18,7 @@ class _GoldPriceCardState extends State<GoldPriceCard> {
     final appState = context.watch<AppState>();
     final currentPrice = appState.goldPrice;
     final selectedKarat = appState.selectedKarat;
-    final isDark = Theme.of(context).brightness == Brightness.dark;
+
 
     return Container(
       padding: const EdgeInsets.all(16),

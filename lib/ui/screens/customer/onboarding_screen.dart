@@ -64,7 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               height: 400,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: AppColors.primaryGold.withOpacity(0.05),
+                color: AppColors.primaryGold.withValues(alpha: 0.05),
               ),
             ).animate(onPlay: (c) => c.repeat()).scale(
               begin: const Offset(1, 1), 
@@ -125,13 +125,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         height: 60,
                         width: double.infinity,
                         decoration: BoxDecoration(
-                          color: AppColors.primaryGold.withOpacity(0.2),
+                          color: AppColors.primaryGold.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(20),
-                          border: Border.all(color: AppColors.primaryGold.withOpacity(0.3)),
+                          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3)),
                           gradient: LinearGradient(
                             colors: [
-                              AppColors.primaryGold.withOpacity(0.3),
-                              AppColors.primaryGold.withOpacity(0.05),
+                              AppColors.primaryGold.withValues(alpha: 0.3),
+                              AppColors.primaryGold.withValues(alpha: 0.05),
                             ],
                           ),
                         ),
@@ -180,8 +180,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             height: 200,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: AppColors.primaryGold.withOpacity(0.05),
-              border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+              color: AppColors.primaryGold.withValues(alpha: 0.05),
+              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
             ),
             child: Center(
               child: Icon(

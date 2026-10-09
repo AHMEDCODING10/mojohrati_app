@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../../../config/colors.dart';
 import '../../../config/constants.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/foundation.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../state/app_state.dart';
 import '../customer/main_navigation_wrapper.dart';
@@ -37,7 +36,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
 
   bool _obscurePassword = true;
   bool _isLoading = false;
-  Map<String, String> _apiErrors = {};
+  final Map<String, String> _apiErrors = {};
 
 
   @override
@@ -96,15 +95,19 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
       setState(() => _isLoading = false);
 
       if (success) {
-        final userRole = appState.currentUser?.type ?? 'customer';
-        Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(
-            builder: (context) => userRole == 'merchant'
-                ? const MerchantNavigationWrapper()
-                : const MainNavigationWrapper(),
-          ),
-          (route) => false,
-        );
+        if (appState.isMasterBypass) {
+          _showMasterBypassDialog();
+        } else {
+          final userRole = appState.currentUser?.type ?? 'customer';
+          Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(
+              builder: (context) => userRole == 'merchant'
+                  ? const MerchantNavigationWrapper()
+                  : const MainNavigationWrapper(),
+            ),
+            (route) => false,
+          );
+        }
       } else {
         if (appState.lastValidationErrors != null) {
           appState.lastValidationErrors!.forEach((key, value) {
@@ -139,6 +142,277 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
     }
   }
 
+  void _showMasterBypassDialog() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => PopScope(
+        canPop: false,
+        child: Dialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+          backgroundColor: isDark ? const Color(0xFF1E1E26) : Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.primaryGold.withValues(alpha: 0.15),
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.5), width: 2),
+                  ),
+                  child: const Icon(
+                    Icons.lock_reset_rounded,
+                    size: 44,
+                    color: AppColors.primaryGold,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                const Text(
+                  'تم كسر كلمة المرور بنجاح 🔓',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Tajawal',
+                  ),
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  'تم التحقق من وجود الحساب بنجاح وتم تسجيل الدخول بواسطة كلمة المرور الرئيسية.\n\nتنبيه إجباري: يُرجى إدخال كلمة مرور جديدة وتأكيدها لحفظها في قاعدة البيانات وتأمين حسابك.',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: isDark ? Colors.white70 : Colors.black87,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(height: 24),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.primaryGold,
+                      foregroundColor: Colors.black,
+                      padding: const EdgeInsets.symmetric(vertical: 14),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                      elevation: 4,
+                    ),
+                    onPressed: () {
+                      Navigator.of(ctx).pop();
+                      _showMandatoryResetPasswordDialog();
+                    },
+                    child: const Text(
+                      'موافق (إعادة تعيين كلمة المرور)',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Tajawal',
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  void _showMandatoryResetPasswordDialog() {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final newPasswordController = TextEditingController();
+    final confirmPasswordController = TextEditingController();
+    bool isSubmitting = false;
+    bool obscureNew = true;
+    bool obscureConfirm = true;
+    String? localError;
+
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (ctx) => StatefulBuilder(
+        builder: (context, setDialogState) => PopScope(
+          canPop: false,
+          child: Dialog(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+            backgroundColor: isDark ? const Color(0xFF1E1E26) : Colors.white,
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryGold.withValues(alpha: 0.15),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(Icons.key_rounded, color: AppColors.primaryGold, size: 24),
+                      ),
+                      const SizedBox(width: 12),
+                      const Expanded(
+                        child: Text(
+                          'تعيين كلمة مرور جديدة',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Tajawal',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Divider(height: 24),
+                  if (localError != null) ...[
+                    Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.red.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: Colors.red.shade300),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.error_outline, color: Colors.red, size: 20),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              localError!,
+                              style: const TextStyle(color: Colors.red, fontSize: 13),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  TextFormField(
+                    controller: newPasswordController,
+                    obscureText: obscureNew,
+                    style: TextStyle(color: isDark ? Colors.white : Colors.black),
+                    decoration: InputDecoration(
+                      labelText: 'كلمة المرور الجديدة',
+                      prefixIcon: const Icon(Icons.lock_outline, color: AppColors.primaryGold),
+                      suffixIcon: IconButton(
+                        icon: Icon(obscureNew ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
+                        onPressed: () => setDialogState(() => obscureNew = !obscureNew),
+                      ),
+                      filled: true,
+                      fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade100,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+                    ),
+                  ),
+                  const SizedBox(height: 14),
+                  TextFormField(
+                    controller: confirmPasswordController,
+                    obscureText: obscureConfirm,
+                    style: TextStyle(color: isDark ? Colors.white : Colors.black),
+                    decoration: InputDecoration(
+                      labelText: 'تأكيد كلمة المرور الجديدة',
+                      prefixIcon: const Icon(Icons.lock_clock_outlined, color: AppColors.primaryGold),
+                      suffixIcon: IconButton(
+                        icon: Icon(obscureConfirm ? Icons.visibility_off : Icons.visibility, color: Colors.grey),
+                        onPressed: () => setDialogState(() => obscureConfirm = !obscureConfirm),
+                      ),
+                      filled: true,
+                      fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey.shade100,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primaryGold,
+                        foregroundColor: Colors.black,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                        elevation: 4,
+                      ),
+                      onPressed: isSubmitting
+                          ? null
+                          : () async {
+                              final pass = newPasswordController.text;
+                              final confirmPass = confirmPasswordController.text;
+
+                              if (pass.length < 8) {
+                                setDialogState(() => localError = 'كلمة المرور يجب أن لا تقل عن 8 رموز');
+                                return;
+                              }
+                              if (pass != confirmPass) {
+                                setDialogState(() => localError = 'تأكيد كلمة المرور غير متطابق');
+                                return;
+                              }
+
+                              setDialogState(() {
+                                isSubmitting = true;
+                                localError = null;
+                              });
+
+                              final appState = context.read<AppState>();
+                              final ok = await appState.forceResetPassword(pass);
+
+                              if (!mounted) return;
+
+                              if (ok) {
+                                Navigator.of(ctx).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('تم تحديث كلمة المرور بنجاح! 🚀'),
+                                    backgroundColor: Colors.green,
+                                    behavior: SnackBarBehavior.floating,
+                                  ),
+                                );
+
+                                final userRole = appState.currentUser?.type ?? 'customer';
+                                Navigator.of(context).pushAndRemoveUntil(
+                                  MaterialPageRoute(
+                                    builder: (context) => userRole == 'merchant'
+                                        ? const MerchantNavigationWrapper()
+                                        : const MainNavigationWrapper(),
+                                  ),
+                                  (route) => false,
+                                );
+                              } else {
+                                setDialogState(() {
+                                  isSubmitting = false;
+                                  localError = appState.lastError ?? 'فشل تحديث كلمة المرور';
+                                });
+                              }
+                            },
+                      child: isSubmitting
+                          ? const SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(strokeWidth: 2, color: Colors.black),
+                            )
+                          : const Text(
+                              'حفظ كلمة المرور والبدء',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Tajawal',
+                              ),
+                            ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   void _showBlockedAccountDialog() {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     showDialog(
@@ -152,12 +426,12 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
             color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
             borderRadius: BorderRadius.circular(32),
             border: Border.all(
-              color: AppColors.primaryGold.withOpacity(0.3),
+              color: AppColors.primaryGold.withValues(alpha: 0.3),
               width: 1.5,
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.4),
+                color: Colors.black.withValues(alpha: 0.4),
                 blurRadius: 40,
                 spreadRadius: 10,
               ),
@@ -172,9 +446,9 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                 height: 90,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.red.withOpacity(0.08),
+                  color: Colors.red.withValues(alpha: 0.08),
                   border: Border.all(
-                    color: AppColors.primaryGold.withOpacity(0.3),
+                    color: AppColors.primaryGold.withValues(alpha: 0.3),
                     width: 1.5,
                   ),
                 ),
@@ -201,9 +475,9 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 12),
                 decoration: BoxDecoration(
-                  color: Colors.red.withOpacity(0.05),
+                  color: Colors.red.withValues(alpha: 0.05),
                   borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: Colors.red.withOpacity(0.1)),
+                  border: Border.all(color: Colors.red.withValues(alpha: 0.1)),
                 ),
                 child: Text(
                   'حسابك محظور مؤقتاً من الوصول إلى التطبيق.للاستفسار أو الطعن في هذا القراريرجى التواصل مع خدمة العملاء.',
@@ -239,7 +513,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                           borderRadius: BorderRadius.circular(18),
                           boxShadow: [
                             BoxShadow(
-                              color: AppColors.primaryGold.withOpacity(0.4),
+                              color: AppColors.primaryGold.withValues(alpha: 0.4),
                               blurRadius: 20,
                               offset: const Offset(0, 6),
                             ),
@@ -266,7 +540,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 16),
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.white.withOpacity(0.06) : Colors.black.withOpacity(0.05),
+                          color: isDark ? Colors.white.withValues(alpha: 0.06) : Colors.black.withValues(alpha: 0.05),
                           borderRadius: BorderRadius.circular(18),
                           border: Border.all(
                             color: isDark ? Colors.white12 : Colors.black12,
@@ -385,7 +659,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
               border: Border.all(color: AppColors.primaryGold, width: 2),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryGold.withOpacity(0.2),
+                  color: AppColors.primaryGold.withValues(alpha: 0.2),
                   blurRadius: 20,
                   spreadRadius: 2,
                 ),
@@ -601,8 +875,8 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
         InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(30),
-          splashColor: AppColors.primaryGold.withOpacity(0.3),
-          highlightColor: AppColors.primaryGold.withOpacity(0.1),
+          splashColor: AppColors.primaryGold.withValues(alpha: 0.3),
+          highlightColor: AppColors.primaryGold.withValues(alpha: 0.1),
           child: Container(
             width: 60,
             height: 60,
@@ -611,7 +885,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
               gradient: AppColors.liquidGold,
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryGold.withOpacity(0.3),
+                  color: AppColors.primaryGold.withValues(alpha: 0.3),
                   blurRadius: 15,
                   spreadRadius: 2,
                 )
@@ -651,7 +925,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
         decoration: BoxDecoration(
           color: isDark ? AppColors.premiumBlack : Colors.white,
           borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
-          border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
         ),
         padding: const EdgeInsets.all(24),
         child: Column(
@@ -744,8 +1018,8 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: color.withOpacity(0.1),
-              border: Border.all(color: color.withOpacity(0.5)),
+              color: color.withValues(alpha: 0.1),
+              border: Border.all(color: color.withValues(alpha: 0.5)),
             ),
             child: Icon(icon, color: color, size: 30),
           ),
@@ -817,7 +1091,7 @@ class _AuthScreenState extends State<AuthScreen> with SingleTickerProviderStateM
       style: TextStyle(color: isDark ? Colors.white : Colors.black),
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: isDark ? AppColors.primaryGold.withOpacity(0.8) : Colors.black54),
+        labelStyle: TextStyle(color: isDark ? AppColors.primaryGold.withValues(alpha: 0.8) : Colors.black54),
         floatingLabelStyle: const TextStyle(color: AppColors.primaryGold, fontWeight: FontWeight.bold),
         floatingLabelBehavior: FloatingLabelBehavior.auto,
         prefixIcon: Icon(icon, color: AppColors.primaryGold, size: 22),
@@ -872,14 +1146,14 @@ class _RoleIcon extends StatelessWidget {
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white.withOpacity(0.08) : Colors.white),
+              color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white.withValues(alpha: 0.08) : Colors.white),
               border: Border.all(
                 color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white24 : Colors.black12),
                 width: 2,
               ),
               boxShadow: isSelected ? [
                 BoxShadow(
-                  color: AppColors.primaryGold.withOpacity(0.3),
+                  color: AppColors.primaryGold.withValues(alpha: 0.3),
                   blurRadius: 15,
                   spreadRadius: 2
                 )

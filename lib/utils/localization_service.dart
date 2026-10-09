@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 import 'package:flutter/services.dart';
 
@@ -13,6 +14,7 @@ class LocalizationService {
         return MapEntry(key, value.toString());
       });
     } catch (e) {
+      // ignore: avoid_print
       print('Localization Error: Failed to load $localeCode.json - $e');
       _localizedStrings = {};
     }

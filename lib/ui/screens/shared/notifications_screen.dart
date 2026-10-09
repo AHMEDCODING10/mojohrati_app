@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -85,7 +86,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         children: [
           Icon(Icons.notifications_off_outlined, 
                size: 80, 
-               color: isDark ? Colors.white10 : Colors.black.withOpacity(0.05))
+               color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05))
             .animate()
             .scale(duration: 600.ms, curve: Curves.easeOutBack),
           const SizedBox(height: 24),
@@ -156,19 +157,19 @@ class _NotificationTile extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
         color: isDark 
-            ? (isRead ? Colors.white.withOpacity(0.03) : Colors.white.withOpacity(0.08)) 
-            : (isRead ? Colors.white.withOpacity(0.6) : Colors.white),
+            ? (isRead ? Colors.white.withValues(alpha: 0.03) : Colors.white.withValues(alpha: 0.08)) 
+            : (isRead ? Colors.white.withValues(alpha: 0.6) : Colors.white),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
           color: isRead 
               ? Colors.transparent 
-              : AppColors.primaryGold.withOpacity(0.3),
+              : AppColors.primaryGold.withValues(alpha: 0.3),
           width: 1,
         ),
         boxShadow: [
           if (!isRead)
             BoxShadow(
-              color: AppColors.primaryGold.withOpacity(0.1),
+              color: AppColors.primaryGold.withValues(alpha: 0.1),
               blurRadius: 15,
               offset: const Offset(0, 8),
             ),
@@ -252,7 +253,7 @@ class _NotificationTile extends StatelessWidget {
                               style: GoogleFonts.cairo(
                                 fontSize: 15,
                                 fontWeight: isRead ? FontWeight.w600 : FontWeight.w800,
-                                color: isDark ? Colors.white.withOpacity(0.9) : Colors.black87,
+                                color: isDark ? Colors.white.withValues(alpha: 0.9) : Colors.black87,
                               ),
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
@@ -299,4 +300,3 @@ class _NotificationTile extends StatelessWidget {
     return Icons.notifications_none_rounded;
   }
 }
-

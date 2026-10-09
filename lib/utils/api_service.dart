@@ -151,6 +151,13 @@ class ApiService {
     });
   }
 
+  Future<Response> forceResetPassword(String newPass, String confirmPass) async {
+    return await _dio.post('/force-reset-password', data: {
+      'password': newPass,
+      'password_confirmation': confirmPass,
+    });
+  }
+
   Future<Response> resetPassword(String email, String phone, String password, String confirmPass) async {
     return await _dio.post('/reset-password', data: {
       'email': email,
@@ -409,6 +416,38 @@ class ApiService {
 
   Future<Response> getExchangeRates() async {
     return await _dio.get('/settings/exchange-rates');
+  }
+
+  // Promotion Requests
+  Future<Response> getMerchantPromotionRequests() async {
+    return await _dio.get('/merchant/promotions/requests');
+  }
+
+  Future<Response> submitPromotionRequest({
+    required String type,
+    String? categoryId,
+    List<int>? productIds,
+    required int durationWeeks,
+    required File receiptImage,
+  }) async {
+    final Map<String, dynamic> fields = {
+      'type': type,
+      'duration_weeks': durationWeeks,
+    };
+    if (categoryId != null) fields['category_id'] = categoryId;
+    if (productIds != null && productIds.isNotEmpty) {
+      for (int i = 0; i < productIds.length; i++) {
+        fields['product_ids[$i]'] = productIds[i];
+      }
+    }
+
+    final formData = FormData.fromMap(fields);
+    formData.files.add(MapEntry(
+      'receipt_image',
+      await MultipartFile.fromFile(receiptImage.path),
+    ));
+
+    return await _dio.post('/merchant/promotions/request', data: formData);
   }
 
 }

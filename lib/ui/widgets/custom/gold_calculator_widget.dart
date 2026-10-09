@@ -47,12 +47,12 @@ class _GoldCalculatorWidgetState extends State<GoldCalculatorWidget> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.8),
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.8),
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.05),
+            color: AppColors.primaryGold.withValues(alpha: 0.05),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -131,7 +131,7 @@ class _GoldCalculatorWidgetState extends State<GoldCalculatorWidget> {
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: AppColors.primaryGold.withOpacity(0.2),
+                  color: AppColors.primaryGold.withValues(alpha: 0.2),
                   blurRadius: 10,
                   offset: const Offset(0, 4),
                 ),
@@ -214,9 +214,9 @@ class _GoldCalculatorWidgetState extends State<GoldCalculatorWidget> {
       height: 32,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.1) : Colors.black.withOpacity(0.05),
+        color: isDark ? Colors.white.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.05),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
       ),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
@@ -266,7 +266,7 @@ class _GoldCalculatorWidgetState extends State<GoldCalculatorWidget> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03),
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03),
         borderRadius: BorderRadius.circular(16),
         border: Border.all(color: isDark ? Colors.white10 : Colors.black12),
       ),

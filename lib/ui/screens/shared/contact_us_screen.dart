@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'package:flutter/material.dart';
 import 'package:mojowharati/config/colors.dart';
 import 'package:mojowharati/config/constants.dart';
@@ -52,8 +53,8 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: isDark 
-                      ? [AppColors.darkGold.withOpacity(0.3), AppColors.premiumBlack]
-                      : [AppColors.lightGold.withOpacity(0.5), AppColors.lightBackground],
+                      ? [AppColors.darkGold.withValues(alpha: 0.3), AppColors.premiumBlack]
+                      : [AppColors.lightGold.withValues(alpha: 0.5), AppColors.lightBackground],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                   ),
@@ -71,7 +72,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                           gradient: AppColors.liquidGold,
                           boxShadow: [
                             BoxShadow(
-                              color: AppColors.primaryGold.withOpacity(0.4),
+                              color: AppColors.primaryGold.withValues(alpha: 0.4),
                               blurRadius: 20,
                               spreadRadius: 2,
                             ),
@@ -94,7 +95,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
               icon: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: isDark ? Colors.black.withOpacity(0.5) : Colors.white.withOpacity(0.8),
+                  color: isDark ? Colors.black.withValues(alpha: 0.5) : Colors.white.withValues(alpha: 0.8),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: const Icon(Icons.arrow_back_ios_rounded, size: 18),
@@ -154,7 +155,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       decoration: BoxDecoration(
         color: isDark ? AppColors.darkSurface : AppColors.lightSurface,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.glassBorder.withOpacity(0.1)),
+        border: Border.all(color: AppColors.glassBorder.withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
@@ -191,12 +192,12 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
-          color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.3 : 0.05),
+            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.05),
             blurRadius: 15,
             offset: const Offset(0, 5),
           ),
@@ -207,8 +208,8 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
         child: InkWell(
           onTap: () => _launchURL(info['type'] ?? 'url', info['value'] ?? ''),
           borderRadius: BorderRadius.circular(20),
-          splashColor: AppColors.primaryGold.withOpacity(0.1),
-          highlightColor: AppColors.primaryGold.withOpacity(0.05),
+          splashColor: AppColors.primaryGold.withValues(alpha: 0.1),
+          highlightColor: AppColors.primaryGold.withValues(alpha: 0.05),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(

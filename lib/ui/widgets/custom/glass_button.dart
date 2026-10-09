@@ -11,14 +11,14 @@ class GlassButton extends StatelessWidget {
   final IconData? icon;
 
   const GlassButton({
-    Key? key,
+    super.key,
     required this.text,
     required this.onTap,
     this.width,
     this.height = 55,
     this.color,
     this.icon,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,15 @@ class GlassButton extends StatelessWidget {
             width: width ?? double.infinity,
             height: height,
             decoration: BoxDecoration(
-              color: (color ?? Colors.white).withOpacity(0.25), // Increased from 0.12
+              color: (color ?? Colors.white).withValues(alpha: 0.25), // Increased from 0.12
               borderRadius: BorderRadius.circular(16),
               border: Border.all(
-                color: (color ?? Colors.white).withOpacity(0.4), // Increased from 0.2
+                color: (color ?? Colors.white).withValues(alpha: 0.4), // Increased from 0.2
                 width: 1.5,
               ),
               boxShadow: [
                 BoxShadow(
-                  color: (color ?? Colors.black).withOpacity(0.1),
+                  color: (color ?? Colors.black).withValues(alpha: 0.1),
                   blurRadius: 10,
                   spreadRadius: 2,
                 ),
@@ -50,8 +50,8 @@ class GlassButton extends StatelessWidget {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  (color ?? Colors.white).withOpacity(0.4), // Increased from 0.2
-                  (color ?? Colors.white).withOpacity(0.1), // Increased from 0.05
+                  (color ?? Colors.white).withValues(alpha: 0.4), // Increased from 0.2
+                  (color ?? Colors.white).withValues(alpha: 0.1), // Increased from 0.05
                 ],
               ),
             ),
@@ -71,7 +71,7 @@ class GlassButton extends StatelessWidget {
                     letterSpacing: 0.5,
                     shadows: [
                       Shadow(
-                        color: Colors.black.withOpacity(0.3),
+                        color: Colors.black.withValues(alpha: 0.3),
                         blurRadius: 4,
                         offset: const Offset(0, 1),
                       ),
@@ -80,7 +80,7 @@ class GlassButton extends StatelessWidget {
                 ),
               ],
             ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-             .shimmer(duration: 2.seconds, color: Colors.white.withOpacity(0.1)),
+             .shimmer(duration: 2.seconds, color: Colors.white.withValues(alpha: 0.1)),
           ),
         ),
       ).animate().fadeIn(duration: 600.ms).scale(begin: const Offset(0.95, 0.95)),

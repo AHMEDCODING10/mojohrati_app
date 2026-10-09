@@ -176,14 +176,14 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 18),
               decoration: BoxDecoration(
                 gradient: isSelected ? AppColors.liquidGold : null,
-                color: isSelected ? null : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+                color: isSelected ? null : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
                 borderRadius: BorderRadius.circular(25),
                 border: Border.all(
-                  color: isSelected ? Colors.transparent : AppColors.primaryGold.withOpacity(0.2),
+                  color: isSelected ? Colors.transparent : AppColors.primaryGold.withValues(alpha: 0.2),
                 ),
                 boxShadow: isSelected ? [
                   BoxShadow(
-                    color: AppColors.primaryGold.withOpacity(0.2),
+                    color: AppColors.primaryGold.withValues(alpha: 0.2),
                     blurRadius: 10,
                     offset: const Offset(0, 4),
                   )
@@ -269,7 +269,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.shopping_bag_outlined, size: 64, color: AppColors.primaryGold.withOpacity(0.3)),
+            Icon(Icons.shopping_bag_outlined, size: 64, color: AppColors.primaryGold.withValues(alpha: 0.3)),
             const SizedBox(height: 16),
             Text(
               'no_products_found'.tr(),
@@ -317,7 +317,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.search_off_rounded, size: 64, color: AppColors.primaryGold.withOpacity(0.3)),
+            Icon(Icons.search_off_rounded, size: 64, color: AppColors.primaryGold.withValues(alpha: 0.3)),
             const SizedBox(height: 16),
             Text(
               'no_products_found'.tr(),
@@ -379,7 +379,7 @@ class _CategoryVisualCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),
@@ -406,8 +406,8 @@ class _CategoryVisualCard extends StatelessWidget {
                     end: Alignment.bottomCenter,
                     colors: [
                       Colors.transparent,
-                      Colors.black.withOpacity(0.1),
-                      Colors.black.withOpacity(0.8),
+                      Colors.black.withValues(alpha: 0.1),
+                      Colors.black.withValues(alpha: 0.8),
                     ],
                   ),
                 ),
@@ -419,9 +419,9 @@ class _CategoryVisualCard extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(6),
                   decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.6),
+                    color: Colors.black.withValues(alpha: 0.6),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: AppColors.primaryGold.withOpacity(0.3)),
+                    border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3)),
                   ),
                   child: Icon(
                     _getIconForCategory(name),
@@ -448,7 +448,7 @@ class _CategoryVisualCard extends StatelessWidget {
                     Text(
                       '$count عنصر',
                       style: GoogleFonts.cairo(
-                        color: Colors.white.withOpacity(0.7),
+                        color: Colors.white.withValues(alpha: 0.7),
                         fontWeight: FontWeight.bold,
                         fontSize: 11,
                       ),
@@ -467,7 +467,7 @@ class _CategoryVisualCard extends StatelessWidget {
     return Container(
       color: isDark ? AppColors.matteBlack : AppColors.royalCream,
       child: Center(
-        child: Icon(Icons.category_outlined, color: AppColors.primaryGold.withOpacity(0.3), size: 40),
+        child: Icon(Icons.category_outlined, color: AppColors.primaryGold.withValues(alpha: 0.3), size: 40),
       ),
     );
   }

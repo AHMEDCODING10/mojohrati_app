@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -329,9 +330,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.redAccent.withOpacity(0.1),
+                          color: Colors.redAccent.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(12),
-                          border: Border.all(color: Colors.redAccent.withOpacity(0.3)),
+                          border: Border.all(color: Colors.redAccent.withValues(alpha: 0.3)),
                         ),
                         child: Row(
                           children: [
@@ -529,10 +530,10 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.redAccent.withOpacity(0.95),
+                    color: Colors.redAccent.withValues(alpha: 0.95),
                     borderRadius: BorderRadius.circular(12),
                     boxShadow: [
-                      BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 15, offset: const Offset(0, 5)),
+                      BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 15, offset: const Offset(0, 5)),
                     ],
                   ),
                   child: Text(
@@ -552,7 +553,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         padding: const EdgeInsets.all(8.0),
         child: Container(
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -565,7 +566,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -594,7 +595,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -609,7 +610,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       Container(
           margin: const EdgeInsets.symmetric(vertical: 8),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             shape: BoxShape.circle,
           ),
           child: IconButton(
@@ -643,9 +644,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       child: Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : AppColors.royalCream,
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : AppColors.royalCream,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: isDark ? Colors.white10 : Colors.black.withOpacity(0.05)),
+        border: Border.all(color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.05)),
       ),
       child: Row(
         children: [
@@ -693,7 +694,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 }
               },
               style: IconButton.styleFrom(
-                backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                 padding: const EdgeInsets.all(10),
               ),
             ),
@@ -702,7 +703,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               icon: const Icon(Icons.chat_bubble_outline_rounded, color: AppColors.primaryGold),
               onPressed: _contactMerchant,
               style: IconButton.styleFrom(
-                backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                 padding: const EdgeInsets.all(10),
               ),
             ),
@@ -718,9 +719,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : AppColors.royalCream,
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : AppColors.royalCream,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.3)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -773,7 +774,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
     showDialog(
       context: context,
-      barrierColor: Colors.black.withOpacity(0.5),
+      barrierColor: Colors.black.withValues(alpha: 0.5),
       builder: (context) => Center(
         child: Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
@@ -781,7 +782,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 blurRadius: 20,
                 offset: const Offset(0, 10),
               ),
@@ -795,11 +796,11 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 padding: const EdgeInsets.all(32),
                 decoration: BoxDecoration(
                   color: Theme.of(context).brightness == Brightness.dark 
-                    ? AppColors.matteBlack.withOpacity(0.8) 
-                    : AppColors.royalCream.withOpacity(0.85),
+                    ? AppColors.matteBlack.withValues(alpha: 0.8) 
+                    : AppColors.royalCream.withValues(alpha: 0.85),
                   borderRadius: BorderRadius.circular(30),
                   border: Border.all(
-                    color: AppColors.primaryGold.withOpacity(0.3),
+                    color: AppColors.primaryGold.withValues(alpha: 0.3),
                     width: 1.5,
                   ),
                 ),
@@ -815,8 +816,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           shape: BoxShape.circle,
                           gradient: LinearGradient(
                             colors: [
-                              AppColors.primaryGold.withOpacity(0.2),
-                              AppColors.primaryGold.withOpacity(0.05),
+                              AppColors.primaryGold.withValues(alpha: 0.2),
+                              AppColors.primaryGold.withValues(alpha: 0.05),
                             ],
                           ),
                         ),
@@ -917,14 +918,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                             hintStyle: GoogleFonts.cairo(fontSize: 13, color: Colors.grey),
                             prefixIcon: const Icon(Icons.notes_rounded, color: AppColors.primaryGold, size: 20),
                             filled: true,
-                            fillColor: AppColors.primaryGold.withOpacity(0.05),
+                            fillColor: AppColors.primaryGold.withValues(alpha: 0.05),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16),
-                              borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.2)),
+                              borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.2)),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16),
-                              borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.2)),
+                              borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.2)),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(16),
@@ -1072,7 +1073,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.04) : Colors.black.withOpacity(0.04),
+        color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.black.withValues(alpha: 0.04),
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: isDark ? Colors.white12 : Colors.black12),
       ),
@@ -1083,7 +1084,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             children: [
               CircleAvatar(
                 radius: 16,
-                backgroundColor: AppColors.primaryGold.withOpacity(0.2),
+                backgroundColor: AppColors.primaryGold.withValues(alpha: 0.2),
                 child: Text(review.userName[0], style: const TextStyle(color: AppColors.primaryGold, fontSize: 12)),
               ),
               const SizedBox(width: 12),
@@ -1165,7 +1166,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 hintStyle: GoogleFonts.cairo(fontSize: 14),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
                 filled: true,
-                fillColor: isDark ? Colors.white.withOpacity(0.05) : Colors.grey[100],
+                fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.grey[100],
               ),
               style: GoogleFonts.cairo(),
             ),
@@ -1207,7 +1208,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: AppColors.primaryGold.withOpacity(0.1),
+                color: AppColors.primaryGold.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: const Icon(Icons.lock_outline_rounded, color: AppColors.primaryGold, size: 48),
@@ -1313,9 +1314,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primaryGold.withOpacity(isDisabled ? 0.1 : 0.5)),
+          border: Border.all(color: AppColors.primaryGold.withValues(alpha: isDisabled ? 0.1 : 0.5)),
           borderRadius: BorderRadius.circular(10),
-          color: isDisabled ? Colors.grey.withOpacity(0.05) : null,
+          color: isDisabled ? Colors.grey.withValues(alpha: 0.05) : null,
         ),
         child: Icon(icon, size: 18, color: isDisabled ? Colors.grey : AppColors.primaryGold),
       ),

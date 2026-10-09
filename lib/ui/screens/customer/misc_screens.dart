@@ -73,7 +73,7 @@ class _GramSearchScreenState extends State<GramSearchScreen> {
               const SizedBox(height: 16),
               Container(
                 padding: const EdgeInsets.all(20),
-                color: AppColors.primaryGold.withOpacity(0.05),
+                color: AppColors.primaryGold.withValues(alpha: 0.05),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -141,7 +141,7 @@ class _GramSearchScreenState extends State<GramSearchScreen> {
         DropdownButton<String>(
           value: value,
           isExpanded: true,
-          underline: Container(height: 1, color: AppColors.primaryGold.withOpacity(0.3)),
+          underline: Container(height: 1, color: AppColors.primaryGold.withValues(alpha: 0.3)),
           items: options.map((o) => DropdownMenuItem(value: o, child: Text(o == 'all' ? 'الكل' : o, style: const TextStyle(fontSize: 12)))).toList(),
           onChanged: onChanged,
         ),
@@ -229,7 +229,7 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
-                    color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
+                    color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
@@ -248,7 +248,7 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
                               color: isSelected ? AppColors.primaryGold : Colors.transparent,
                               borderRadius: BorderRadius.circular(12),
                               boxShadow: isSelected ? [
-                                BoxShadow(color: AppColors.primaryGold.withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 2))
+                                BoxShadow(color: AppColors.primaryGold.withValues(alpha: 0.3), blurRadius: 8, offset: const Offset(0, 2))
                               ] : null,
                             ),
                             child: Text(
@@ -276,9 +276,9 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
                         width: 220,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          color: isDark ? Colors.white.withOpacity(0.02) : Colors.black.withOpacity(0.02),
+                          color: isDark ? Colors.white.withValues(alpha: 0.02) : Colors.black.withValues(alpha: 0.02),
                           shape: BoxShape.circle,
-                          border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+                          border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
                         ),
                         child: AnimatedContainer(
                           duration: const Duration(milliseconds: 50),
@@ -290,7 +290,7 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
                             border: Border.all(color: AppColors.primaryGold, width: 4),
                             boxShadow: [
                               BoxShadow(
-                                color: AppColors.primaryGold.withOpacity(0.3),
+                                color: AppColors.primaryGold.withValues(alpha: 0.3),
                                 blurRadius: 15,
                                 spreadRadius: 2,
                               ),
@@ -343,11 +343,11 @@ class _SizeGuideScreenState extends State<SizeGuideScreen> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                             decoration: BoxDecoration(
-                              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.8),
+                              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.8),
                               borderRadius: BorderRadius.circular(24),
-                              border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+                              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
                               boxShadow: [
-                                BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 20),
+                                BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 20),
                               ],
                             ),
                             child: Column(
@@ -463,16 +463,16 @@ class AboutUsScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: AppColors.primaryGold.withOpacity(0.2), width: 1),
+                      border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2), width: 1),
                     ),
                     child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: BoxDecoration(
-                        color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03),
+                        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03),
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: AppColors.primaryGold.withOpacity(0.1),
+                            color: AppColors.primaryGold.withValues(alpha: 0.1),
                             blurRadius: 20,
                             spreadRadius: 5,
                           ),
@@ -545,7 +545,7 @@ class AboutUsScreen extends StatelessWidget {
                 
                 Text(
                   '© 2024 MOJOHRTI PRO. ALL RIGHTS RESERVED.',
-                  style: GoogleFonts.playfairDisplay(fontSize: 10, letterSpacing: 2, color: Colors.grey.withOpacity(0.5)),
+                  style: GoogleFonts.playfairDisplay(fontSize: 10, letterSpacing: 2, color: Colors.grey.withValues(alpha: 0.5)),
                 ),
                 
                 const SizedBox(height: 100), // Increased bottom padding to ensure visibility of all text
@@ -565,9 +565,9 @@ class AboutUsScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+            color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
             borderRadius: BorderRadius.circular(24),
-            border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+            border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
           ),
           child: Column(
             children: [
@@ -591,9 +591,9 @@ class AboutUsScreen extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
-        color: AppColors.primaryGold.withOpacity(0.1),
+        color: AppColors.primaryGold.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.3)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -662,9 +662,9 @@ class PrivacyPolicyScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -735,9 +735,9 @@ class TermsScreen extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(24),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(24),
-              border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

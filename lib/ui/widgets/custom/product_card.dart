@@ -52,11 +52,11 @@ class _ProductCardState extends State<ProductCard> {
             color: isDark ? AppColors.matteBlack : Colors.white,
             borderRadius: BorderRadius.circular(28),
             border: Border.all(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03),
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03),
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(isDark ? 0.4 : 0.05),
+                color: Colors.black.withValues(alpha: isDark ? 0.4 : 0.05),
                 blurRadius: 25,
                 offset: const Offset(0, 12),
               ),
@@ -85,7 +85,7 @@ class _ProductCardState extends State<ProductCard> {
                                 child: Container(color: Colors.grey),
                               ),
                               errorWidget: (context, url, error) => Container(
-                                color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
+                                color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
                                 child: Center(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +96,7 @@ class _ProductCardState extends State<ProductCard> {
                                         'Mojohrti Pro',
                                         style: GoogleFonts.playfairDisplay(
                                           fontSize: 10,
-                                          color: AppColors.primaryGold.withOpacity(0.5),
+                                          color: AppColors.primaryGold.withValues(alpha: 0.5),
                                           letterSpacing: 1,
                                         ),
                                       ),
@@ -118,10 +118,10 @@ class _ProductCardState extends State<ProductCard> {
                           child: Container(
                             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                             decoration: BoxDecoration(
-                              color: Colors.redAccent.withOpacity(0.9),
+                              color: Colors.redAccent.withValues(alpha: 0.9),
                               borderRadius: BorderRadius.circular(8),
                               boxShadow: [
-                                BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 6, offset: const Offset(0, 2)),
+                                BoxShadow(color: Colors.black.withValues(alpha: 0.2), blurRadius: 6, offset: const Offset(0, 2)),
                               ],
                             ),
                             child: Text(
@@ -132,6 +132,38 @@ class _ProductCardState extends State<ProductCard> {
                                 fontSize: 8,
                               ),
                             ),
+                          ),
+                        ),
+                      ),
+                    if (widget.product.isPromoted)
+                      Positioned(
+                        top: 12,
+                        right: 12,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                          decoration: BoxDecoration(
+                            gradient: const LinearGradient(
+                              colors: [Color(0xFFC5A059), Color(0xFFE8D095)],
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(color: Colors.black.withValues(alpha: 0.3), blurRadius: 6, offset: const Offset(0, 2)),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(Icons.workspace_premium, color: Colors.black, size: 12),
+                              const SizedBox(width: 3),
+                              Text(
+                                'مُميَّز ✨',
+                                style: GoogleFonts.cairo(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 9,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -160,9 +192,9 @@ class _ProductCardState extends State<ProductCard> {
                           child: Container(
                             padding: const EdgeInsets.all(8),
                             decoration: BoxDecoration(
-                              color: Colors.black.withOpacity(0.3),
+                              color: Colors.black.withValues(alpha: 0.3),
                               shape: BoxShape.circle,
-                              border: Border.all(color: Colors.white.withOpacity(0.2)),
+                              border: Border.all(color: Colors.white.withValues(alpha: 0.2)),
                             ),
                             child: Icon(
                               isFav ? Icons.favorite : Icons.favorite_border,
@@ -219,7 +251,7 @@ class _ProductCardState extends State<ProductCard> {
                         if (widget.product.merchant != null) ...[
                           CircleAvatar(
                             radius: 8,
-                            backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                            backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                             backgroundImage: widget.product.merchant!.logoUrl.isNotEmpty 
                               ? NetworkImage(widget.product.merchant!.logoUrl) 
                               : null,
@@ -259,7 +291,7 @@ class _ProductCardState extends State<ProductCard> {
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: AppColors.primaryGold.withOpacity(0.1),
+                            color: AppColors.primaryGold.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(4),
                           ),
                           child: Text(

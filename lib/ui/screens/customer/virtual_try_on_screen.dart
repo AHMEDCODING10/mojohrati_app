@@ -48,7 +48,7 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(AppConstants.placeholderImage), 
                 fit: BoxFit.cover,
@@ -60,8 +60,8 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
                   center: Alignment.center,
                   radius: 0.8,
                   colors: [
-                    Colors.black.withOpacity(0.1),
-                    Colors.black.withOpacity(0.6),
+                    Colors.black.withValues(alpha: 0.1),
+                    Colors.black.withValues(alpha: 0.6),
                   ],
                 ),
               ),
@@ -122,7 +122,7 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
                                 shape: BoxShape.circle,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: AppColors.primaryGold.withOpacity(0.15 * _glowController.value), 
+                                    color: AppColors.primaryGold.withValues(alpha: 0.15 * _glowController.value), 
                                     blurRadius: 50 + (20 * _glowController.value), 
                                     spreadRadius: 10
                                   ),
@@ -175,15 +175,15 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
           height: 2,
           width: double.infinity,
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(color: AppColors.primaryGold, blurRadius: 15, spreadRadius: 1),
             ],
             gradient: LinearGradient(
               colors: [
                 Colors.transparent,
-                AppColors.primaryGold.withOpacity(0.5),
+                AppColors.primaryGold.withValues(alpha: 0.5),
                 AppColors.primaryGold,
-                AppColors.primaryGold.withOpacity(0.5),
+                AppColors.primaryGold.withValues(alpha: 0.5),
                 Colors.transparent,
               ],
             ),
@@ -197,10 +197,10 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.5),
+        color: Colors.black.withValues(alpha: 0.5),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
-        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 20)],
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
+        boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.2), blurRadius: 20)],
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -236,7 +236,7 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
             color: Colors.green,
             shape: BoxShape.circle,
             boxShadow: [
-              BoxShadow(color: Colors.green.withOpacity(0.5 * _glowController.value), blurRadius: 8, spreadRadius: 2 * _glowController.value),
+              BoxShadow(color: Colors.green.withValues(alpha: 0.5 * _glowController.value), blurRadius: 8, spreadRadius: 2 * _glowController.value),
             ],
           ),
         );
@@ -252,9 +252,9 @@ class _VirtualTryOnScreenState extends State<VirtualTryOnScreen> with TickerProv
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.05),
+            color: Colors.white.withValues(alpha: 0.05),
             borderRadius: BorderRadius.circular(32),
-            border: Border.all(color: Colors.white.withOpacity(0.1)),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.1)),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -293,7 +293,7 @@ class _ScannerGridPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = AppColors.primaryGold.withOpacity(0.05)
+      ..color = AppColors.primaryGold.withValues(alpha: 0.05)
       ..strokeWidth = 0.5;
 
     for (double i = 0; i < size.width; i += 40) {

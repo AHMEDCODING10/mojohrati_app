@@ -61,7 +61,7 @@ class _GoldGradientButtonState extends State<GoldGradientButton> {
                 BoxShadow(
                   color: (widget.isLoading || widget.onPressed == null)
                     ? Colors.transparent 
-                    : AppColors.primaryGold.withOpacity(_isHovered ? 0.4 : 0.2),
+                    : AppColors.primaryGold.withValues(alpha: _isHovered ? 0.4 : 0.2),
                   blurRadius: _isHovered ? 12 : 8,
                   offset: Offset(0, _isHovered ? 6 : 4),
                 ),
@@ -99,7 +99,7 @@ class _GoldGradientButtonState extends State<GoldGradientButton> {
           ),
         ),
       ).animate(target: _isHovered ? 1 : 0)
-       .shimmer(duration: 1.5.seconds, color: Colors.white.withOpacity(0.3)),
+       .shimmer(duration: 1.5.seconds, color: Colors.white.withValues(alpha: 0.3)),
     );
   }
 }

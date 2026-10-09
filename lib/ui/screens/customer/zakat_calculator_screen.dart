@@ -108,9 +108,9 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: AppColors.primaryGold.withOpacity(0.1),
+        color: AppColors.primaryGold.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
       ),
       child: Row(
         children: [
@@ -131,12 +131,12 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.04) : Colors.white,
+        color: isDark ? Colors.white.withValues(alpha: 0.04) : Colors.white,
         borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.15)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.15)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.03),
+            color: Colors.black.withValues(alpha: 0.03),
             blurRadius: 10,
             offset: const Offset(0, 4),
           )
@@ -178,7 +178,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
       decoration: BoxDecoration(
-        color: AppColors.primaryGold.withOpacity(0.07),
+        color: AppColors.primaryGold.withValues(alpha: 0.07),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -214,7 +214,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
                   margin: const EdgeInsets.symmetric(horizontal: 4),
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   decoration: BoxDecoration(
-                    color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+                    color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
                     borderRadius: BorderRadius.circular(15),
                     border: Border.all(
                       color: isSelected ? AppColors.primaryGold : (isDark ? Colors.white10 : Colors.black12),
@@ -252,7 +252,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
             floatingLabelBehavior: FloatingLabelBehavior.auto,
             prefixIcon: Icon(icon, color: AppColors.primaryGold),
             filled: true,
-            fillColor: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+            fillColor: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide.none,
@@ -280,7 +280,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.3),
+            color: AppColors.primaryGold.withValues(alpha: 0.3),
             blurRadius: 20,
             offset: const Offset(0, 10),
           )
@@ -311,7 +311,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
       padding: const EdgeInsets.all(28),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
         borderRadius: BorderRadius.circular(30),
         border: Border.all(
           color: hasZakat ? AppColors.primaryGold : Colors.orange,
@@ -319,7 +319,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 30,
             offset: const Offset(0, 15),
           )
@@ -405,7 +405,7 @@ class _ZakatCalculatorScreenState extends State<ZakatCalculatorScreen> {
         Container(
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: effectiveColor.withOpacity(0.1),
+            color: effectiveColor.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Icon(icon, color: effectiveColor, size: 24),

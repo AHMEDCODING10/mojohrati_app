@@ -1,3 +1,4 @@
+// ignore_for_file: use_build_context_synchronously, deprecated_member_use, curly_braces_in_flow_control_structures, avoid_unnecessary_containers
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -204,7 +205,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: isDark ? Colors.white.withOpacity(0.9) : Colors.black87,
+            color: isDark ? Colors.white.withValues(alpha: 0.9) : Colors.black87,
           ),
         ),
         const SizedBox(width: 12),
@@ -272,10 +273,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
       child: Container(
         width: 120,
         decoration: BoxDecoration(
-          color: isDark ? Colors.white.withOpacity(0.03) : AppColors.primaryGold.withOpacity(0.05),
+          color: isDark ? Colors.white.withValues(alpha: 0.03) : AppColors.primaryGold.withValues(alpha: 0.05),
           borderRadius: BorderRadius.circular(24),
           border: Border.all(
-            color: AppColors.primaryGold.withOpacity(isDark ? 0.4 : 0.2),
+            color: AppColors.primaryGold.withValues(alpha: isDark ? 0.4 : 0.2),
             width: 1.5,
           ),
         ),
@@ -300,10 +301,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
             image: DecorationImage(image: image, fit: BoxFit.cover),
-            border: Border.all(color: AppColors.primaryGold.withOpacity(0.5), width: 1.5),
+            border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.5), width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.2),
+                color: Colors.black.withValues(alpha: 0.2),
                 blurRadius: 10,
                 offset: const Offset(0, 4),
               ),
@@ -388,10 +389,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
       borderRadius: BorderRadius.circular(20),
       child: Container(
         decoration: BoxDecoration(
-          color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+          color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
-            color: AppColors.primaryGold.withOpacity(isDark ? 0.6 : 0.3),
+            color: AppColors.primaryGold.withValues(alpha: isDark ? 0.6 : 0.3),
             width: isDark ? 1.5 : 1.2,
           ),
         ),
@@ -441,10 +442,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
           child: Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white.withOpacity(0.7),
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(20),
               border: Border.all(
-                color: field.hasError ? Colors.red.withOpacity(0.5) : (isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05)),
+                color: field.hasError ? Colors.red.withValues(alpha: 0.5) : (isDark ? Colors.white.withValues(alpha: 0.08) : Colors.black.withValues(alpha: 0.05)),
               ),
             ),
             child: Column(
@@ -506,7 +507,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.3),
+                color: Colors.black.withValues(alpha: 0.3),
                 blurRadius: 20,
                 offset: const Offset(0, -4),
               ),

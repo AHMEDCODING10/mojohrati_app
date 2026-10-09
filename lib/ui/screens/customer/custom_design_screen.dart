@@ -92,7 +92,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.matteBlack.withOpacity(0.95),
+        backgroundColor: AppColors.matteBlack.withValues(alpha: 0.95),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         title: Text('success'.tr(), style: GoogleFonts.playfairDisplay(color: AppColors.primaryGold)),
         content: Text('تم إرسال طلبك بنجاح!\nسيتواصل معك التاجر قريباً.',
@@ -214,7 +214,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                   height: 30,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: isActive ? AppColors.primaryGold : Colors.grey.withOpacity(0.3),
+                    color: isActive ? AppColors.primaryGold : Colors.grey.withValues(alpha: 0.3),
                     border: Border.all(
                         color: isActive ? Colors.white24 : Colors.transparent),
                   ),
@@ -234,7 +234,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                       height: 2,
                       color: index < _currentStep
                           ? AppColors.primaryGold
-                          : Colors.grey.withOpacity(0.3),
+                          : Colors.grey.withValues(alpha: 0.3),
                     ),
                   ),
               ],
@@ -346,7 +346,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
               child: Column(
                 children: [
                   Icon(Icons.store_mall_directory_outlined,
-                      size: 64, color: Colors.grey.withOpacity(0.4)),
+                      size: 64, color: Colors.grey.withValues(alpha: 0.4)),
                   const SizedBox(height: 12),
                   Text('لا توجد متاجر متاحة حالياً',
                       style: GoogleFonts.cairo(color: Colors.grey)),
@@ -372,8 +372,8 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: isSelected
-                        ? AppColors.primaryGold.withOpacity(0.15)
-                        : (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+                        ? AppColors.primaryGold.withValues(alpha: 0.15)
+                        : (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
                       color: isSelected ? AppColors.primaryGold : Colors.transparent,
@@ -382,7 +382,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                     boxShadow: [
                       if (!isDark)
                         BoxShadow(
-                          color: Colors.black.withOpacity(0.04),
+                          color: Colors.black.withValues(alpha: 0.04),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         )
@@ -392,7 +392,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                     children: [
                       CircleAvatar(
                         radius: 28,
-                        backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                        backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                         backgroundImage:
                             storeLogo != null ? NetworkImage(storeLogo) : null,
                         child: storeLogo == null
@@ -423,7 +423,7 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
                             ? const Icon(Icons.check_circle_rounded,
                                 color: AppColors.primaryGold, key: ValueKey('checked'))
                             : Icon(Icons.radio_button_unchecked_rounded,
-                                color: Colors.grey.withOpacity(0.4),
+                                color: Colors.grey.withValues(alpha: 0.4),
                                 key: const ValueKey('unchecked')),
                       ),
                     ],
@@ -494,12 +494,12 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
             height: 180,
             width: double.infinity,
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+              color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
               borderRadius: BorderRadius.circular(25),
               border: Border.all(
                 color: _selectedImageFile != null
                     ? AppColors.primaryGold
-                    : AppColors.primaryGold.withOpacity(0.3),
+                    : AppColors.primaryGold.withValues(alpha: 0.3),
                 width: _selectedImageFile != null ? 2 : 1,
               ),
             ),
@@ -598,8 +598,8 @@ class _CustomDesignOrderScreenState extends State<CustomDesignOrderScreen> {
             hintStyle: const TextStyle(color: Colors.grey, fontSize: 13),
             filled: true,
             fillColor: isDark
-                ? Colors.white.withOpacity(0.05)
-                : Colors.black.withOpacity(0.05),
+                ? Colors.white.withValues(alpha: 0.05)
+                : Colors.black.withValues(alpha: 0.05),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16),
                 borderSide: BorderSide.none),

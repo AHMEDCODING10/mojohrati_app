@@ -11,6 +11,7 @@ import '../../screens/customer/misc_screens.dart';
 import '../../screens/customer/zakat_calculator_screen.dart';
 import '../../screens/tools/currency_converter_screen.dart';
 import '../../screens/merchant/merchant_custom_designs_screen.dart';
+import '../../screens/merchant/request_promotion_screen.dart';
 import '../../../utils/localization_service.dart';
 
 class MerchantDrawer extends StatelessWidget {
@@ -38,8 +39,8 @@ class MerchantDrawer extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     color: isDark 
-                        ? Colors.black.withOpacity(0.8) 
-                        : Colors.white.withOpacity(0.85),
+                        ? Colors.black.withValues(alpha: 0.8) 
+                        : Colors.white.withValues(alpha: 0.85),
                     gradient: isDark ? AppColors.meshDark : AppColors.meshLight,
                   ),
                 ),
@@ -84,6 +85,14 @@ class MerchantDrawer extends StatelessWidget {
                         isDark: isDark,
                         badgeCount: pendingDesignsCount,
                       ),
+                      const SizedBox(height: 12),
+                      _buildMerchantRoyalCard(
+                        context,
+                        Icons.workspace_premium_rounded,
+                        'طلب ترويج مميز ✨',
+                        destination: const RequestPromotionScreen(),
+                        isDark: isDark,
+                      ),
                       
                       const SizedBox(height: 24),
                       _buildSectionHeader('useful_tools'.tr(), isDark),
@@ -101,7 +110,7 @@ class MerchantDrawer extends StatelessWidget {
                         'zakat_calc_title'.tr(), 
                         destination: const ZakatCalculatorScreen(),
                         isDark: isDark,
-                        accent: AppColors.primaryGold.withOpacity(0.1),
+                        accent: AppColors.primaryGold.withValues(alpha: 0.1),
                       ),
                       const SizedBox(height: 12),
                       _buildMerchantRoyalCard(
@@ -151,7 +160,7 @@ class MerchantDrawer extends StatelessWidget {
         borderRadius: const BorderRadius.only(bottomRight: Radius.circular(50)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.3),
+            color: AppColors.primaryGold.withValues(alpha: 0.3),
             blurRadius: 30,
             offset: const Offset(0, 10),
           ),
@@ -240,7 +249,7 @@ class MerchantDrawer extends StatelessWidget {
       child: Text(
         title,
         style: TextStyle(
-          color: isDark ? AppColors.primaryGold.withOpacity(0.8) : AppColors.primaryGold,
+          color: isDark ? AppColors.primaryGold.withValues(alpha: 0.8) : AppColors.primaryGold,
           fontSize: 13,
           fontWeight: FontWeight.w800,
         ),
@@ -256,16 +265,16 @@ class MerchantDrawer extends StatelessWidget {
   ) {
     return Container(
       decoration: BoxDecoration(
-        color: accent ?? (isDark ? Colors.white.withOpacity(0.05) : Colors.white),
+        color: accent ?? (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isDark ? AppColors.primaryGold.withOpacity(0.1) : Colors.black.withOpacity(0.05),
+          color: isDark ? AppColors.primaryGold.withValues(alpha: 0.1) : Colors.black.withValues(alpha: 0.05),
           width: 1,
         ),
         boxShadow: [
           if (!isDark)
             BoxShadow(
-              color: Colors.black.withOpacity(0.03),
+              color: Colors.black.withValues(alpha: 0.03),
               blurRadius: 15,
               offset: const Offset(0, 8),
             ),
@@ -300,7 +309,7 @@ class MerchantDrawer extends StatelessWidget {
                   style: GoogleFonts.cairo(
                     fontSize: 14, 
                     fontWeight: FontWeight.bold,
-                    color: isDark ? Colors.white.withOpacity(0.9) : Colors.black87,
+                    color: isDark ? Colors.white.withValues(alpha: 0.9) : Colors.black87,
                   ),
                 ),
               ),
@@ -331,9 +340,9 @@ class MerchantDrawer extends StatelessWidget {
   Widget _buildThemeToggleCard(ThemeState themeState, bool isDark) {
     return Container(
       decoration: BoxDecoration(
-        color: isDark ? Colors.black.withOpacity(0.2) : Colors.white,
+        color: isDark ? Colors.black.withValues(alpha: 0.2) : Colors.white,
         borderRadius: BorderRadius.circular(24),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.1)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.1)),
       ),
       child: Column(
         children: [
@@ -344,7 +353,7 @@ class MerchantDrawer extends StatelessWidget {
             secondary: Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: AppColors.primaryGold.withOpacity(0.1),
+                color: AppColors.primaryGold.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(

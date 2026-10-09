@@ -78,10 +78,10 @@ class _MainNavigationWrapperState extends State<MainNavigationWrapper> {
             decoration: BoxDecoration(
               color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
               borderRadius: BorderRadius.circular(16),
-              border: Border.all(color: AppColors.primaryGold.withOpacity(0.5), width: 1.5),
+              border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.5), width: 1.5),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withValues(alpha: 0.2),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
@@ -222,7 +222,7 @@ class _MainNavigationWrapperState extends State<MainNavigationWrapper> {
         color: isDark ? AppColors.matteBlack : Colors.white,
         border: Border(
           top: BorderSide(
-            color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.05),
+            color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.05),
           ),
         ),
       ),

@@ -96,10 +96,10 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: isDark ? Colors.white.withOpacity(0.05) : Colors.white,
+        color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.white,
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: isDark ? Colors.white.withOpacity(0.08) : Colors.black.withOpacity(0.05),
+          color: isDark ? Colors.white.withValues(alpha: 0.08) : Colors.black.withValues(alpha: 0.05),
         ),
       ),
       child: Column(
@@ -119,7 +119,7 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
-              color: isDark ? Colors.white.withOpacity(0.03) : Colors.black.withOpacity(0.02),
+              color: isDark ? Colors.white.withValues(alpha: 0.03) : Colors.black.withValues(alpha: 0.02),
               borderRadius: BorderRadius.circular(16),
               border: Border.all(color: isDark ? Colors.white10 : Colors.black12),
             ),
@@ -127,7 +127,7 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                  backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                   child: const Icon(Icons.person_outline, color: AppColors.primaryGold, size: 20),
                 ),
                 const SizedBox(width: 12),
@@ -201,7 +201,7 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
                   fit: BoxFit.cover,
                   errorBuilder: (_, __, ___) => Container(
                     height: 80,
-                    color: Colors.grey.withOpacity(0.1),
+                    color: Colors.grey.withValues(alpha: 0.1),
                     child: const Icon(Icons.image_not_supported_outlined, color: Colors.grey),
                   ),
                 ),
@@ -308,7 +308,7 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Text(label,
@@ -320,9 +320,9 @@ class _MerchantCustomDesignsScreenState extends State<MerchantCustomDesignsScree
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: AppColors.primaryGold.withOpacity(0.1),
+        color: AppColors.primaryGold.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.primaryGold.withOpacity(0.2)),
+        border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.2)),
       ),
       child: Text(label,
           style: const TextStyle(

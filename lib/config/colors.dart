@@ -25,9 +25,9 @@ class AppColors {
   static const Color warning = Color(0xFFFB8C00);
 
   // Glassmorphism effect colors (low opacity)
-  static Color glassWhite = Colors.white.withOpacity(0.15);
-  static Color glassBlack = Colors.black.withOpacity(0.15);
-  static Color glassBorder = Colors.white.withOpacity(0.2);
+  static Color glassWhite = Colors.white.withValues(alpha: 0.15);
+  static Color glassBlack = Colors.black.withValues(alpha: 0.15);
+  static Color glassBorder = Colors.white.withValues(alpha: 0.2);
 
   // Yemen Flag Inspired Accents (Subtle)
   static const Color yemenRed = Color(0xFFCE1126);
@@ -66,7 +66,7 @@ class AppColors {
   );
 
   // Depth & Glow
-  static Color getGlowColor(Color base) => base.withOpacity(0.3);
+  static Color getGlowColor(Color base) => base.withValues(alpha: 0.3);
   static const Color premiumBlack = Color(0xFF080808);
   static const Color royalBlack = Color(0xFF1A1A1A);
   static const Color royalCream = Color(0xFFF5F5DC);

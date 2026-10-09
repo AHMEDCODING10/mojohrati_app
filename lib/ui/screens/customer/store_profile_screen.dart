@@ -234,9 +234,9 @@ class _StoreProfileScreenState extends State<StoreProfileScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    Colors.black.withOpacity(0.3),
+                    Colors.black.withValues(alpha: 0.3),
                     Colors.transparent,
-                    isDark ? AppColors.matteBlack.withOpacity(0.8) : Colors.white.withOpacity(0.8),
+                    isDark ? AppColors.matteBlack.withValues(alpha: 0.8) : Colors.white.withValues(alpha: 0.8),
                   ],
                 ),
               ),
@@ -261,7 +261,7 @@ class _StoreProfileScreenState extends State<StoreProfileScreen> {
             border: Border.all(color: AppColors.primaryGold, width: 2),
             boxShadow: [
               BoxShadow(
-                color: AppColors.primaryGold.withOpacity(0.2),
+                color: AppColors.primaryGold.withValues(alpha: 0.2),
                 blurRadius: 15,
                 spreadRadius: 2,
               ),
@@ -337,7 +337,7 @@ class _StoreProfileScreenState extends State<StoreProfileScreen> {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: AppColors.primaryGold.withOpacity(0.1),
+          color: AppColors.primaryGold.withValues(alpha: 0.1),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, color: AppColors.primaryGold, size: 16),

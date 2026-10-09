@@ -199,7 +199,7 @@ class _LogoPicker extends StatelessWidget {
                 CircleAvatar(
                   radius: 56,
                   backgroundImage: bg,
-                  backgroundColor: AppColors.primaryGold.withOpacity(0.1),
+                  backgroundColor: AppColors.primaryGold.withValues(alpha: 0.1),
                 ),
                 Positioned(
                   bottom: 0,

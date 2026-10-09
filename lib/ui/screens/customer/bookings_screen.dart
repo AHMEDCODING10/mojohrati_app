@@ -120,7 +120,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.bookmark_border_rounded, size: 80, color: Theme.of(context).hintColor.withOpacity(0.3)),
+          Icon(Icons.bookmark_border_rounded, size: 80, color: Theme.of(context).hintColor.withValues(alpha: 0.3)),
           const SizedBox(height: 16),
           Text(message, style: TextStyle(fontSize: 18, color: Theme.of(context).hintColor)),
         ],
@@ -149,10 +149,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03)),
+        border: Border.all(color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
+            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.08),
             blurRadius: 24,
             offset: const Offset(0, 12),
           ),
@@ -193,7 +193,7 @@ class _BookingsScreenState extends State<BookingsScreen> {
                   height: 80,
                   margin: const EdgeInsets.only(left: 16),
                   decoration: BoxDecoration(
-                    color: AppColors.primaryGold.withOpacity(0.1),
+                    color: AppColors.primaryGold.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: const Icon(Icons.draw_rounded, color: AppColors.primaryGold),
@@ -282,10 +282,10 @@ class _BookingsScreenState extends State<BookingsScreen> {
       decoration: BoxDecoration(
         color: isDark ? const Color(0xFF1A1A1A) : Colors.white,
         borderRadius: BorderRadius.circular(28),
-        border: Border.all(color: isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03)),
+        border: Border.all(color: isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03)),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(isDark ? 0.3 : 0.08),
+            color: Colors.black.withValues(alpha: isDark ? 0.3 : 0.08),
             blurRadius: 24,
             offset: const Offset(0, 12),
           ),
@@ -346,9 +346,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
                               Container(
                                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                                 decoration: BoxDecoration(
-                                  color: AppColors.primaryGold.withOpacity(0.1),
+                                  color: AppColors.primaryGold.withValues(alpha: 0.1),
                                   borderRadius: BorderRadius.circular(6),
-                                  border: Border.all(color: AppColors.primaryGold.withOpacity(0.3)),
+                                  border: Border.all(color: AppColors.primaryGold.withValues(alpha: 0.3)),
                                 ),
                                 child: Text(
                                   'x${booking.quantity}',
@@ -444,9 +444,9 @@ class _BookingsScreenState extends State<BookingsScreen> {
               margin: const EdgeInsets.only(top: 12),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.05),
+                color: Colors.red.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.red.withOpacity(0.2)),
+                border: Border.all(color: Colors.red.withValues(alpha: 0.2)),
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -511,16 +511,16 @@ class _BookingsScreenState extends State<BookingsScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
       decoration: BoxDecoration(
         gradient: isPremium ? AppColors.liquidGold : null,
-        color: isPremium ? null : color.withOpacity(0.1),
+        color: isPremium ? null : color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(30),
         boxShadow: isPremium ? [
           BoxShadow(
-            color: AppColors.primaryGold.withOpacity(0.3),
+            color: AppColors.primaryGold.withValues(alpha: 0.3),
             blurRadius: 8,
             offset: const Offset(0, 2),
           )
         ] : null,
-        border: isPremium ? null : Border.all(color: color.withOpacity(0.3)),
+        border: isPremium ? null : Border.all(color: color.withValues(alpha: 0.3)),
       ),
       child: Text(
         text, 

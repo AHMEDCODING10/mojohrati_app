@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../config/colors.dart';
-import '../../../config/colors.dart';
 import 'reset_password_screen.dart';
 import '../../widgets/custom/gold_gradient_button.dart';
 class OTPVerificationScreen extends StatefulWidget {
@@ -108,7 +107,7 @@ class _OTPVerificationScreenState extends State<OTPVerificationScreen> {
                 Center(
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         '00:59',
                         style: TextStyle(color: AppColors.primaryGold, fontWeight: FontWeight.bold, fontSize: 18),
                       ),

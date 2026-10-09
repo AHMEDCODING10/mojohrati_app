@@ -64,11 +64,11 @@ class AppTheme {
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.3), width: 1.2),
+        borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.3), width: 1.2),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.3), width: 1.2),
+        borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.3), width: 1.2),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
@@ -158,11 +158,11 @@ class AppTheme {
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.3), width: 1.2),
+        borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.3), width: 1.2),
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
-        borderSide: BorderSide(color: AppColors.primaryGold.withOpacity(0.3), width: 1.2),
+        borderSide: BorderSide(color: AppColors.primaryGold.withValues(alpha: 0.3), width: 1.2),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(15),
